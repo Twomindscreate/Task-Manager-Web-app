@@ -44,7 +44,7 @@ const SideNav = () => {
         }}
       >
         <div className="userInfo">
-          <Avatar className="avatar">U</Avatar>
+          <Avatar className="avatar" src="../img/one.png"></Avatar>
           <Typography variant="h6">User Name</Typography>
           <Typography variant="body2">user@example.com</Typography>
         </div>

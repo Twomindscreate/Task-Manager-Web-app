@@ -11,7 +11,7 @@ from rest_framework import generics
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTOPS
 
-class RegistrView(generics.CreateAPIView):
+class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = [AllowAny,]
     serializer_class = RegistrationSerializer
