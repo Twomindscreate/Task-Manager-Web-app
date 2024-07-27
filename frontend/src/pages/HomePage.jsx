@@ -1,7 +1,6 @@
 import React from "react";
 import { Container, Button, Row, Col, Navbar, Nav } from "react-bootstrap";
 import "./HomePage.css";
-import SideNav from "./user/Dashboard"; // Ensure this path is correct
 
 const HomePage = () => (
   <div>

@@ -1,11 +1,11 @@
 import React from "react";
 
-import HomePage from "./pages/HomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import LoginPage from "./Account/LoginPage";
-import RegistrationPage from "./Account/RegistrationPage";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import { AuthProvider } from "./context/AuthContext";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HomePage, Dashboard, LoginPage, RegistrationPage } from "./pages";
 import "./Account/login.css";
-import SideNav from "./pages/user/Dashboard";
 import "./Account/register.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -13,10 +13,24 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 const App = () => {
   return (
     <div className="App">
-      {/* <HomePage />
-      <LoginPage />
-      <RegistrationPage /> */}
-      <SideNav />
+      <Router>
+        <AuthProvider>
+          <Routes>
+            <Route exact path="/" element={<HomePage />} />
+            <Route
+              exact
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route exact path="/login" element={<LoginPage />} />
+            <Route exact path="/register" element={<RegistrationPage />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
     </div>
   );
 };
