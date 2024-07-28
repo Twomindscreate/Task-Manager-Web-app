@@ -4,7 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { HomePage, Dashboard, LoginPage, RegistrationPage } from "./pages";
+import {
+  HomePage,
+  Dashboard,
+  LoginPage,
+  RegistrationPage,
+} from "./pages/index";
 import "./Account/login.css";
 import "./Account/register.css";
 import "bootstrap/dist/css/bootstrap.min.css";

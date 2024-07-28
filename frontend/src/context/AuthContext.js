@@ -1,10 +1,7 @@
-import { CreateContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { Toast } from "react-bootstrap";
-import { positions } from "@mui/system";
-
-const swal = required("sweetalert2");
+import Swal from "sweetalert2";
 
 const AuthContext = createContext();
 
@@ -17,9 +14,9 @@ export const AuthProvider = ({ children }) => {
       : null
   );
 
-  const { user, setUser } = useState(
+  const [user, setUser] = useState(
     localStorage.getItem("authTokens")
-      ? JSON.jwtDecode(localStorage.getItem("authTokens"))
+      ? jwtDecode(localStorage.getItem("authTokens"))
       : null
   );
 
@@ -43,9 +40,9 @@ export const AuthProvider = ({ children }) => {
       setUser(jwtDecode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
       navigate("/");
-      swal.fire({
+      Swal.fire({
         title: "Login successfully..! ",
-        icon: "Success",
+        icon: "success",
         toast: true,
         timer: 600,
         position: "top-right",
@@ -55,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       console.log(response.status);
       console.log("An Error Occured");
-      swal.fire({
+      Swal.fire({
         title: "Email or password doesn't Exist..!",
         icon: "error",
         toast: true,
@@ -91,7 +88,7 @@ export const AuthProvider = ({ children }) => {
     const data = await response.json();
     if (response.status === 201) {
       navigate("/");
-      swal.fire({
+      Swal.fire({
         title: "Registration Successful..! ",
         icon: "success",
         toast: true,
@@ -103,7 +100,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       console.log(response.status);
       console.log("An Error Occured");
-      swal.fire({
+      Swal.fire({
         title: "Server Error Registration Failed..!",
         icon: "error",
         toast: true,
@@ -114,12 +111,13 @@ export const AuthProvider = ({ children }) => {
       });
     }
   };
+
   const logoutUser = () => {
     setAuthTokens(null);
     setUser(null);
     localStorage.removeItem("authTokens");
     navigate("/login");
-    swal.fire({
+    Swal.fire({
       title: "Logged Out Successfully..! ",
       icon: "success",
       toast: true,
