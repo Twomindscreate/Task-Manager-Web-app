@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import HttpService from "../Api/httpService";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -71,45 +72,37 @@ export const AuthProvider = ({ children }) => {
     password,
     password2
   ) => {
-    let url = "http://127.0.0.1:8000/api/register/";
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        full_name,
-        email,
-        username,
-        password,
-        password2,
-      }),
-    });
-    const data = await response.json();
-    if (response.status === 201) {
-      navigate("/");
-      Swal.fire({
-        title: "Registration Successful..! ",
-        icon: "success",
-        toast: true,
-        timer: 600,
-        position: "top-right",
-        timerProgressBar: true,
-        showConfirmButton: false,
+    console.log(full_name, "---------", email);
+    HttpService("register/", "post", {
+      full_name,
+      email,
+      username,
+      password,
+      password2,
+    })
+      .then(({ data }) => {
+        navigate("/");
+        Swal.fire({
+          title: "Registration Successful..! ",
+          icon: "success",
+          toast: true,
+          timer: 600,
+          position: "top-right",
+          timerProgressBar: true,
+          showConfirmButton: false,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: "Server Error Registration Failed..!",
+          icon: "error",
+          toast: true,
+          timer: 600,
+          position: "top-right",
+          timerProgressBar: true,
+          showConfirmButton: false,
+        });
       });
-    } else {
-      console.log(response.status);
-      console.log("An Error Occured");
-      Swal.fire({
-        title: "Server Error Registration Failed..!",
-        icon: "error",
-        toast: true,
-        timer: 600,
-        position: "top-right",
-        timerProgressBar: true,
-        showConfirmButton: false,
-      });
-    }
   };
 
   const logoutUser = () => {
