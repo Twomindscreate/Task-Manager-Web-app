@@ -3,6 +3,11 @@
   background-color: #f8f9fa;
   border-radius: 0.3rem;
   margin-top: 2rem;
+  font-family: "Courier New", monospace;
+  /* set box shadow */
+  box-shadow: 0 4px 8px 0 rgba(255, 1, 1, 0.474);
+  border: 1px solid black;
+  padding: 100px;
 }
 
 .jumbotron-container h1 {
@@ -13,9 +18,4 @@
 .jumbotron-container p {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
-}
-
-.jumbotron-container .btn-primary {
-  padding: 0.5rem 2rem;
-  font-size: 1.125rem;
 }

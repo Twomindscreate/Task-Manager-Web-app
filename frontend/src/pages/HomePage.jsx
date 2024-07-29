@@ -53,7 +53,6 @@ const HomePage = () => {
           <Col md={8}>
             <h1>Welcome to the Task Manager</h1>
             <p>Manage your tasks efficiently and effectively.</p>
-            <Button variant="primary">Get Started</Button>
           </Col>
         </Row>
       </Container>

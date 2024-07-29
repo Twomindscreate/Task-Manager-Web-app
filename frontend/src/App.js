@@ -10,7 +10,7 @@ import {
   LoginPage,
   RegistrationPage,
 } from "./pages/index";
-import "./Account/login.css";
+
 import "./Account/register.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";

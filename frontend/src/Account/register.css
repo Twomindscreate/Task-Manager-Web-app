@@ -1,25 +1,65 @@
-body {
-  background-color: #f8f9fa;
+form {
+  width: 600px;
+  border: 1px solid black;
+  padding: 25px;
+  margin: 50px auto;
+  font-family: "Courier Prime", monospace;
+  /* add shadow */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
-.input-group-text {
-  background-color: #ffffff;
-  border-right: 0;
+input {
+  padding: 10px;
+  width: 100%;
 }
 
-.input-group .form-control {
-  border-left: 0;
+.extra {
+  margin-top: 10px;
 }
-
-.card {
-  border-radius: 1rem;
-}
-
-.card-title {
+.extra a {
+  text-decoration: none;
+  color: black;
   font-weight: bold;
-  font-size: 1.5rem;
 }
 
-button {
-  border-radius: 0.5rem;
+input,
+label {
+  margin-bottom: 5px;
+}
+
+h1 {
+  text-align: center;
+}
+
+input:invalid {
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.059);
+  color: black;
+}
+input:valid {
+  border: 1px solid green;
+  /* background-color use light green hexa */
+  background-color: rgba(7, 245, 7, 0.13);
+}
+/* this is button register class */
+.btn {
+  background-color: #ff4800b4;
+  color: white;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: 2px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 1;
+  background-color: #fd4801e1;
+  color: white;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
