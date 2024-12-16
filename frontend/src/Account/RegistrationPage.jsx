@@ -11,16 +11,9 @@ const RegistrationPage = () => {
 
   const { registerUser } = useContext(AuthContext);
 
-  const handleSubmit = async (e) => {
-    e.preventdefault();
-    console.log(full_name);
-    console.log(email);
-    console.log(username);
-    console.log(password);
-    console.log(password2);
+  const handleSubmit = async () => {
+    registerUser(full_name, email, username, password, password2);
   };
-
-  registerUser(full_name, email, username, password, password2);
 
   return (
     <div className="container">
@@ -81,7 +74,7 @@ const RegistrationPage = () => {
             required
           />
         </div>
-        <button type="submit" onClick={handleSubmit} className="btn">
+        <button type="button" onClick={handleSubmit} className="btn">
           Register
         </button>
         <div className="text-center extra">
